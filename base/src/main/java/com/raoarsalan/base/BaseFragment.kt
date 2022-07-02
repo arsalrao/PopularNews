@@ -7,12 +7,17 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import javax.inject.Inject
 
 abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val modelClass: Class<V>) :
     Fragment() {
 
     private var _binding: T? = null
     protected val binding get() = _binding!!
+    abstract val viewModelBindingVariable: Int
+
+    @Inject
+    lateinit var viewModel: V
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +32,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val mode
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        binding.setVariable(viewModelBindingVariable, viewModel)
         binding.executePendingBindings()
         listeners()
         observers()
