@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.7">
       <module name="PopularNews.app" target="11" />
       <module name="PopularNews.base" target="11" />
+      <module name="PopularNews.features.news" target="11" />
       <module name="PopularNews.framework" target="11" />
     </bytecodeTargetLevel>
   </component>
