@@ -51,4 +51,6 @@ dependencies {
     implementation  dependencies.retrofit2Adapter
     implementation  dependencies.retrofit2GsonConverter
     implementation  dependencies.okHttp3Logging
+    implementation dependencies.coroutinesCore
+
 }
