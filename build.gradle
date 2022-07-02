@@ -37,6 +37,7 @@ ext {
     navVersion = '2.4.2'
     retrofit2Version = '2.9.0'
     okhttpLoggingVersion = '4.9.1'
+    googleGsonVersion = '2.8.9'
 
 
     commonDependencies = [
@@ -55,5 +56,6 @@ ext {
             retrofit2Adapter      : "com.squareup.retrofit2:adapter-rxjava2:$retrofit2Version",
             retrofit2GsonConverter: "com.squareup.retrofit2:converter-gson:$retrofit2Version",
             okHttp3Logging        : "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion",
+            gson                  : "com.google.code.gson:gson:$googleGsonVersion"
     ]
 }
