@@ -16,3 +16,4 @@ rootProject.name = "PopularNews"
 include ':app'
 include ':base'
 include ':framework'
+include ':core'
