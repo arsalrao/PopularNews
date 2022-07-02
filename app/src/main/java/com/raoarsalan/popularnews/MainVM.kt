@@ -1,6 +1,6 @@
 package com.raoarsalan.popularnews
 
-import androidx.lifecycle.ViewModel
+import com.raoarsalan.base.BaseViewModel
 
-class MainVM : ViewModel() {
+class MainVM : BaseViewModel() {
 }
