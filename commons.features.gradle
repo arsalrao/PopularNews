@@ -32,6 +32,7 @@ android {
 def globalDependencies = rootProject.ext
 dependencies {
     Map<String, String> dependencies = globalDependencies.commonDependencies
+    implementation project(':core')
     implementation dependencies.hilt
     kapt dependencies.kaptHilt
     implementation dependencies.navigationFragment
