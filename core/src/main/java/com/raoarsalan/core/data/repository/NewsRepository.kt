@@ -1,4 +1,4 @@
-package com.raoarsalan.core.domain.data.repository
+package com.raoarsalan.core.data.repository
 
 import com.raoarsalan.core.domain.Result
 import com.raoarsalan.core.domain.ResultResponse

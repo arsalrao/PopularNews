@@ -1,6 +1,6 @@
 package com.raoarsalan.framework.di
 
-import com.raoarsalan.core.domain.data.repository.NewsRepository
+import com.raoarsalan.core.data.repository.NewsRepository
 import com.raoarsalan.framework.network.apis.NewsApi
 import com.raoarsalan.framework.repositoryimpl.NewsRepositoryImpl
 import dagger.Module
