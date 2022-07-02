@@ -40,6 +40,8 @@ ext {
     googleGsonVersion = '2.8.9'
     coroutineVersion = '1.6.0-native-mt'
     javaInjectVersion = '1'
+    circleImageView = "3.1.0"
+
 
 
 
@@ -62,7 +64,8 @@ ext {
             okHttp3Logging        : "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion",
             gson                  : "com.google.code.gson:gson:$googleGsonVersion",
             coroutinesCore        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion",
-            javaInject            : "javax.inject:javax.inject:$javaInjectVersion"
+            javaInject            : "javax.inject:javax.inject:$javaInjectVersion",
+            circleImageView       : "de.hdodenhof:circleimageview:$circleImageView"
 
     ]
 }

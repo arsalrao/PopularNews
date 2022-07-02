@@ -36,4 +36,6 @@ dependencies {
     kapt dependencies.kaptHilt
     implementation dependencies.navigationFragment
     implementation dependencies.navigationUi
+    implementation dependencies.circleImageView
+
 }
