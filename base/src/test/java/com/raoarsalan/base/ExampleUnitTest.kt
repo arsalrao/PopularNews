@@ -1,4 +1,4 @@
-package com.raoarsalan.core
+package com.raoarsalan.base
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
