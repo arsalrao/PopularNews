@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 def globalDependencies = rootProject.ext
 apply from: "$rootProject.projectDir/commons.gradle"
@@ -34,4 +36,6 @@ android {
 
 dependencies {
     Map<String, String> dependencies = globalDependencies.commonDependencies
+    implementation dependencies.hilt
+    kapt dependencies.kaptHilt
 }
