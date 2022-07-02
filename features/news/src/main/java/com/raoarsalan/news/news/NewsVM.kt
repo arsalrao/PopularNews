@@ -1,4 +1,4 @@
-package com.raoarsalan.news
+package com.raoarsalan.news.news
 
 import com.raoarsalan.base.BaseViewModel
 import javax.inject.Inject
