@@ -1,11 +1,8 @@
 package com.raoarsalan.popularnews
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.raoarsalan.base.BaseActivity
+import com.raoarsalan.popularnews.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+class MainActivity : BaseActivity<ActivityMainBinding, MainVM>(MainVM::class.java) {
+    override fun setBinding() = ActivityMainBinding.inflate(layoutInflater)
 }
