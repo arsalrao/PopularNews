@@ -9,5 +9,15 @@
         android:id="@+id/newsFragment"
         android:name="com.raoarsalan.news.news.NewsFragment"
         android:label="NewsFragment"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_detailsNewsFragment"
+            app:destination="@id/detailsNewsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsNewsFragment"
+        android:name="com.raoarsalan.news.details.NewsDetailsFragment"
+        android:label="DetailsNewsFragment"
+        tools:layout="@layout/fragment_news_details" />
 </navigation>
