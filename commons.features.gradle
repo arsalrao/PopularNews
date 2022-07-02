@@ -1,0 +1,6 @@
+
+//write only those dependencies which are the part of only all features modules
+def globalDependencies = rootProject.ext
+dependencies {
+    Map<String, String> dependencies = globalDependencies.commonDependencies
+}
