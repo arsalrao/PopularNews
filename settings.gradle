@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "PopularNews"
 include ':app'
-include ':core'
+include ':base'
 include ':framework'
