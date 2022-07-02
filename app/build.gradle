@@ -2,16 +2,20 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+apply from: "$rootProject.projectDir/commons.gradle"
+def globalDependencies = rootProject.ext
 
 android {
-    compileSdk 32
+    compileSdk rootProject.compileSdkVersion
+
 
     defaultConfig {
         applicationId "com.raoarsalan.popularnews"
-        minSdk 23
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        minSdk rootProject.minSdkVersion
+        targetSdk rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,11 +37,10 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation project(':base')
+    implementation project(':core')
+    implementation project(':framework')
+    implementation project(':features:news')
+    Map<String, String> dependencies = globalDependencies.commonDependencies
+
 }
