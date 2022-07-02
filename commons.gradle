@@ -1,0 +1,14 @@
+//write only those dependencies which are the part of all modules
+
+def globalDependencies = rootProject.ext
+dependencies {
+
+    Map<String, String> dependencies = globalDependencies.commonDependencies
+    implementation  dependencies.coreKtx
+    implementation  dependencies.appCompat
+    implementation dependencies.material
+    implementation dependencies.constraintLayout
+    testImplementation dependencies.junit
+    androidTestImplementation dependencies.testJunit
+    androidTestImplementation dependencies.espressoCore
+}
