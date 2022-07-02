@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.raoarsalan.news.NewsVM" />
+            type="com.raoarsalan.news.news.NewsVM" />
     </data>
 
     <androidx.appcompat.widget.AppCompatTextView

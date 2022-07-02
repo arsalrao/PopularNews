@@ -49,5 +49,7 @@ dependencies {
     Map<String, String> dependencies = globalDependencies.commonDependencies
     implementation dependencies.hilt
     kapt dependencies.kaptHilt
+    implementation dependencies.navigationFragment
+    implementation dependencies.navigationUi
 
 }
