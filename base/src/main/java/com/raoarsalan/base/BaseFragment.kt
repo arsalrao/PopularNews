@@ -10,7 +10,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
+import com.raoarsalan.base.utill.LoadingDialog
 import com.raoarsalan.base.utill.NavigationCommand
+import com.raoarsalan.base.utill.toast
 import javax.inject.Inject
 
 abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val modelClass: Class<V>) :
@@ -22,6 +24,8 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val mode
 
     @Inject
     lateinit var viewModel: V
+
+    private var loadingDialog: LoadingDialog? = null
 
     private val shareVM: ShareViewModel by activityViewModels()
     open lateinit var sharedViewModel: ShareViewModel
@@ -62,6 +66,27 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val mode
                 }
             }
         )
+
+        (viewModel as BaseViewModel).observeLoading.observe(
+            viewLifecycleOwner,
+            Observer {
+                when {
+                    it.showLoading -> {
+                        showLoadingWidget()
+                    }
+                    it.isSuccess -> {
+                        hideLoadingWidget()
+                    }
+                    it.message != "" -> {
+                        hideLoadingWidget()
+                        requireContext().toast(it.message)
+                    }
+                    else -> {
+                        hideLoadingWidget()
+                    }
+                }
+            }
+        )
     }
 
     abstract fun setBinding(): T
@@ -75,4 +100,12 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val mode
         _binding = null
     }
 
+    private fun showLoadingWidget() {
+        loadingDialog = LoadingDialog(requireContext())
+    }
+
+    private fun hideLoadingWidget() {
+        loadingDialog?.dismiss()
+
+    }
 }

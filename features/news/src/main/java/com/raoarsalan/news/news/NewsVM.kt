@@ -17,19 +17,27 @@ class NewsVM @Inject constructor(
     private val _observeNews = SingleLiveEvent<List<NewsModel>>()
     val observeNews: LiveData<List<NewsModel>> = _observeNews
 
+    init {
+        getPopularNews()
+    }
+
     fun getPopularNews() {
+        startLoading()
         viewModelScope.launch {
             when (val res = newsInteractor.getPopularNews()) {
                 is Result.Success -> {
+                    endLoading()
                     newsInteractor.savePopularNews(res.data.results)
                     _observeNews.postValue(res.data.results)
                 }
 
                 is Result.GenericError -> {
+                    endLoading(res.message)
                     _observeNews.postValue(newsInteractor.getPopularNewsLocally())
                 }
 
                 is Result.NetworkError -> {
+                    endLoading("Network Error")
                     _observeNews.postValue(newsInteractor.getPopularNewsLocally())
                 }
             }

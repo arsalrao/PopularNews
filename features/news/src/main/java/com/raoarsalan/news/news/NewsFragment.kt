@@ -22,7 +22,6 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsVM>(NewsVM::class.jav
 
     override fun initViews() {
         super.initViews()
-        viewModel.getPopularNews()
 
         binding.rvNews.let {
             it.adapter = adapter
