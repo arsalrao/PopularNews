@@ -7,15 +7,26 @@ import com.raoarsalan.core.domain.model.response.MediaModel
 import com.raoarsalan.framework.database.converters.MediaModelConverter
 
 @Entity(tableName = "popularNews")
-class NewsEntity(
+data class NewsEntity(
     @PrimaryKey
-    val id: Long,
-    val source: String,
-    val published_date: String,
-    val byline: String,
-    val type: String,
-    val title: String,
-    val abstract: String,
+    var id: Long,
+    var source: String,
+    var published_date: String,
+    var byline: String,
+    var type: String,
+    var title: String,
+    var abstract: String,
     @TypeConverters(MediaModelConverter::class)
-    val media: List<MediaModel>?
-)
+    var media: List<MediaModel>?
+) {
+    constructor() : this(
+        0,
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        null
+    )
+}
