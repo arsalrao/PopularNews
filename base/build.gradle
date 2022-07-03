@@ -41,4 +41,6 @@ dependencies {
     Map<String, String> dependencies = globalDependencies.commonDependencies
     implementation dependencies.hilt
     kapt dependencies.kaptHilt
+    implementation dependencies.glide
+    annotationProcessor dependencies.glideCompiler
 }

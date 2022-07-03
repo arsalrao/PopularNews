@@ -9,4 +9,12 @@ data class NewsModel(
     val title: String,
     val abstract: String,
     val media: List<MediaModel>?
-)
+) {
+    fun getArticleImg(): String? {
+        return try {
+            media?.get(0)?.mediaMeta?.get(0)?.url
+        } catch (e: IndexOutOfBoundsException) {
+            null
+        }
+    }
+}
