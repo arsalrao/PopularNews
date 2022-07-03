@@ -10,6 +10,9 @@ import com.raoarsalan.framework.database.mappers.toEntity
 import com.raoarsalan.framework.network.ApiCall
 import com.raoarsalan.framework.network.apis.NewsApi
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -17,12 +20,14 @@ class NewsRepositoryImpl @Inject constructor(
     private val api: NewsApi,
     private val dao: NewsDao
 ) : NewsRepository {
-    override suspend fun getPopularNews(): Result<ResponseModel> {
-        return withContext(Dispatchers.IO) {
-            return@withContext ApiCall.result {
-                api.getPopularNews()
-            }
-        }
+    override suspend fun getPopularNews(): Flow<Result<ResponseModel>> {
+        return flow {
+            emit(
+                ApiCall.result {
+                    api.getPopularNews()
+                }
+            )
+        }.flowOn(Dispatchers.IO)
     }
 
     override suspend fun getPopularNewsLocally(): List<NewsModel> {

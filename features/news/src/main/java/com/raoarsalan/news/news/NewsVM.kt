@@ -1,9 +1,8 @@
 package com.raoarsalan.news.news
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.raoarsalan.base.BaseViewModel
-import com.raoarsalan.base.utill.SingleLiveEvent
 import com.raoarsalan.core.domain.Result
 import com.raoarsalan.core.domain.interactor.NewsInteractor
 import com.raoarsalan.core.domain.model.response.NewsModel
@@ -14,8 +13,8 @@ class NewsVM @Inject constructor(
     private val newsInteractor: NewsInteractor
 ) : BaseViewModel() {
 
-    private val _observeNews = SingleLiveEvent<List<NewsModel>>()
-    val observeNews: LiveData<List<NewsModel>> = _observeNews
+
+    val observeNews: MutableLiveData<List<NewsModel>> = MutableLiveData()
 
     init {
         getPopularNews()
@@ -24,23 +23,26 @@ class NewsVM @Inject constructor(
     fun getPopularNews() {
         startLoading()
         viewModelScope.launch {
-            when (val res = newsInteractor.getPopularNews()) {
-                is Result.Success -> {
-                    endLoading()
-                    newsInteractor.savePopularNews(res.data.results)
-                    _observeNews.postValue(res.data.results)
-                }
+            newsInteractor.getPopularNews()
+                .collect {
+                    when (it) {
+                        is Result.Success -> {
+                            endLoading()
+                            newsInteractor.savePopularNews(it.data.results)
+                            observeNews.postValue(it.data.results)
+                        }
 
-                is Result.GenericError -> {
-                    endLoading(res.message)
-                    _observeNews.postValue(newsInteractor.getPopularNewsLocally())
-                }
+                        is Result.GenericError -> {
+                            endLoading(it.message)
+                            observeNews.postValue(newsInteractor.getPopularNewsLocally())
+                        }
 
-                is Result.NetworkError -> {
-                    endLoading("Network Error")
-                    _observeNews.postValue(newsInteractor.getPopularNewsLocally())
+                        is Result.NetworkError -> {
+                            endLoading("Network Error")
+                            observeNews.postValue(newsInteractor.getPopularNewsLocally())
+                        }
+                    }
                 }
-            }
         }
     }
 }
