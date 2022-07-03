@@ -39,6 +39,7 @@ android {
 dependencies {
 
     Map<String, String> dependencies = globalDependencies.commonDependencies
+    implementation project(':core')
     implementation dependencies.hilt
     kapt dependencies.kaptHilt
     implementation dependencies.glide

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
@@ -21,6 +22,15 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val mode
 
     @Inject
     lateinit var viewModel: V
+
+    private val shareVM: ShareViewModel by activityViewModels()
+    open lateinit var sharedViewModel: ShareViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (viewModel as BaseViewModel).shareViewModel = shareVM
+        sharedViewModel = shareVM
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

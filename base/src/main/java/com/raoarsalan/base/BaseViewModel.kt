@@ -6,4 +6,6 @@ import com.raoarsalan.base.utill.SingleLiveEvent
 
 abstract class BaseViewModel : ViewModel() {
     val navigationCommands = SingleLiveEvent<NavigationCommand>()
+
+    lateinit var shareViewModel: ShareViewModel
 }

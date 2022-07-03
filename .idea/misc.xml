@@ -10,7 +10,9 @@
         <entry key="..\:/AndroidStudioProjects/PopularNews2/features/news/src/main/res/layout/fragment_news.xml" value="0.14629629629629629" />
         <entry key="..\:/AndroidStudioProjects/PopularNews2/features/news/src/main/res/layout/fragment_news_details.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/PopularNews2/features/news/src/main/res/layout/item_news.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2921875" />
         <entry key="features/news/src/main/res/layout/fragment_news.xml" value="0.2921875" />
+        <entry key="features/news/src/main/res/layout/fragment_news_details.xml" value="0.21481481481481482" />
         <entry key="features/news/src/main/res/layout/item_news.xml" value="0.2921875" />
       </map>
     </option>

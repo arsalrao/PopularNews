@@ -18,13 +18,34 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_back"
             app:title="News Details"
             app:titleTextColor="@color/black" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.60" />
+
+        <ImageView
+            android:id="@+id/ivNews"
+            loadImg="@{viewModel.shareViewModel.news.fullImg()}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="@string/news_img"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias=".30"
+            tools:src="@tools:sample/avatars" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitle"
@@ -36,9 +57,10 @@
             android:gravity="center_horizontal"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:text="@{viewModel.shareViewModel.news.title}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintTop_toBottomOf="@id/ivNews"
             tools:text="this is title" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -47,7 +69,7 @@
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
+            android:text="@{viewModel.shareViewModel.news.abstract}"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             tools:text="this is description details" />
 

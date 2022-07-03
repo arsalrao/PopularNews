@@ -31,6 +31,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsVM>(NewsVM::class.jav
     }
 
     override fun onItemClick(item: NewsModel) {
+        viewModel.shareViewModel.news = item
         viewModel.navigationCommands.value = NavigationCommand.To(
             NewsFragmentDirections.actionNewsFragmentToDetailsNewsFragment()
         )
