@@ -10,7 +10,7 @@ internal fun NewsEntity.toDomain() = NewsModel(
     byline = byline,
     type = type,
     title = title,
-    abstract = abstract,
+    abstractNews = abstractNews,
     media = media
 )
 

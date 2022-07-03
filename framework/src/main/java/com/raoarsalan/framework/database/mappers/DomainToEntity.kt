@@ -10,7 +10,7 @@ internal fun NewsModel.toEntity() = NewsEntity(
     byline = byline,
     type = type,
     title = title,
-    abstract = abstract,
+    abstractNews = abstractNews,
     media = media
 )
 

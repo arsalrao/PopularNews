@@ -15,7 +15,7 @@ data class NewsEntity(
     var byline: String,
     var type: String,
     var title: String,
-    var abstract: String,
+    var abstractNews: String,
     @TypeConverters(MediaModelConverter::class)
     var media: List<MediaModel>?
 ) {

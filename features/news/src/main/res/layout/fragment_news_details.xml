@@ -70,7 +70,7 @@
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="@{viewModel.shareViewModel.news.abstract}"
+            android:text="@{viewModel.shareViewModel.news.abstractNews}"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             tools:text="this is description details" />
 

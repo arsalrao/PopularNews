@@ -1,5 +1,7 @@
 package com.raoarsalan.core.domain.model.response
 
+import com.google.gson.annotations.SerializedName
+
 data class NewsModel(
     val id: Long,
     val source: String,
@@ -7,7 +9,8 @@ data class NewsModel(
     val byline: String,
     val type: String,
     val title: String,
-    val abstract: String,
+    @SerializedName("abstract")
+    val abstractNews: String,
     val media: List<MediaModel>?
 ) {
     /** return thumbnail image of news with 75x75 **/
