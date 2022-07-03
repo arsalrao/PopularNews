@@ -1,6 +1,7 @@
 package com.raoarsalan.framework.di
 
 import com.raoarsalan.core.data.repository.NewsRepository
+import com.raoarsalan.framework.database.dao.NewsDao
 import com.raoarsalan.framework.network.apis.NewsApi
 import com.raoarsalan.framework.repositoryimpl.NewsRepositoryImpl
 import dagger.Module
@@ -14,5 +15,5 @@ import javax.inject.Singleton
 object RepositoryModule {
     @Provides
     @Singleton
-    fun provideNewsRepo(api: NewsApi): NewsRepository = NewsRepositoryImpl(api)
+    fun provideNewsRepo(api: NewsApi, dao: NewsDao): NewsRepository = NewsRepositoryImpl(api, dao)
 }

@@ -21,13 +21,16 @@ class NewsVM @Inject constructor(
         viewModelScope.launch {
             when (val res = newsInteractor.getPopularNews()) {
                 is Result.Success -> {
+                    newsInteractor.savePopularNews(res.data.results)
                     _observeNews.postValue(res.data.results)
                 }
 
                 is Result.GenericError -> {
+                    _observeNews.postValue(newsInteractor.getPopularNewsLocally())
                 }
 
                 is Result.NetworkError -> {
+                    _observeNews.postValue(newsInteractor.getPopularNewsLocally())
                 }
             }
         }
