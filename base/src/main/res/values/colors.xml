@@ -2,4 +2,5 @@
 <resources>
     <color name="placeHolder">#8B8C89</color>
     <color name="red">#FF1100</color>
+    <color name="purple_700">#FF3700B3</color>
 </resources>
