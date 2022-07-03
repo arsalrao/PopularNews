@@ -43,6 +43,7 @@ ext {
     javaInjectVersion = '1'
     circleImageView = "3.1.0"
     glideVersion = '4.13.2'
+    roomVersion = '2.4.2'
 
 
     commonDependencies = [
@@ -66,7 +67,10 @@ ext {
             javaInject            : "javax.inject:javax.inject:$javaInjectVersion",
             circleImageView       : "de.hdodenhof:circleimageview:$circleImageView",
             glide                 : "com.github.bumptech.glide:glide:$glideVersion",
-            glideCompiler         : "com.github.bumptech.glide:compiler:$glideVersion"
+            glideCompiler         : "com.github.bumptech.glide:compiler:$glideVersion",
+            room                  : "androidx.room:room-runtime:$roomVersion",
+            roomCompiler          : "androidx.room:room-compiler:$roomVersion",
+            roomKtx               : "androidx.room:room-ktx:$roomVersion"
 
     ]
 }
