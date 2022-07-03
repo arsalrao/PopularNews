@@ -43,4 +43,6 @@ dependencies {
     kapt dependencies.kaptHilt
     implementation dependencies.glide
     annotationProcessor dependencies.glideCompiler
+    implementation dependencies.navigationFragment
+    implementation dependencies.navigationUi
 }

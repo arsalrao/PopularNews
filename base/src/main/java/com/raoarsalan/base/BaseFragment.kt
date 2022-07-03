@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import androidx.navigation.fragment.findNavController
+import com.raoarsalan.base.utill.NavigationCommand
 import javax.inject.Inject
 
 abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val modelClass: Class<V>) :
@@ -36,6 +39,19 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val mode
         binding.executePendingBindings()
         listeners()
         observers()
+        observe()
+    }
+
+    private fun observe() {
+        (viewModel as BaseViewModel).navigationCommands.observe(
+            viewLifecycleOwner,
+            Observer {
+                when (it) {
+                    is NavigationCommand.To -> findNavController().navigate(it.directions)
+                    is NavigationCommand.Back -> findNavController().popBackStack()
+                }
+            }
+        )
     }
 
     abstract fun setBinding(): T
