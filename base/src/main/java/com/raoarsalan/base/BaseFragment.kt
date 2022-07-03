@@ -12,7 +12,9 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.raoarsalan.base.utill.LoadingDialog
 import com.raoarsalan.base.utill.NavigationCommand
+import com.raoarsalan.base.utill.showSnackBar
 import com.raoarsalan.base.utill.toast
+import com.raoarsalan.core.R
 import javax.inject.Inject
 
 abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val modelClass: Class<V>) :
@@ -80,6 +82,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val mode
                     it.message != "" -> {
                         hideLoadingWidget()
                         requireContext().toast(it.message)
+                        showSnackBar(requireActivity(), getString(R.string.snack_bar_msg))
                     }
                     else -> {
                         hideLoadingWidget()
@@ -106,6 +109,5 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val mode
 
     private fun hideLoadingWidget() {
         loadingDialog?.dismiss()
-
     }
 }
