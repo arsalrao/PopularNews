@@ -7,4 +7,5 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainVM>(MainVM::class.java) {
     override fun setBinding() = ActivityMainBinding.inflate(layoutInflater)
+
 }
