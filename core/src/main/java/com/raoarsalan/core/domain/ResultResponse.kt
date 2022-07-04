@@ -5,7 +5,7 @@ data class ResultResponse<T>(var result: T?) {
     companion object {
         private const val BAD_REQUEST = 400
         private const val CLIENT_TIMEOUT = 499 //Nginx shutdown
-        private const val UN_AUTHORIZED = 401
+        const val UN_AUTHORIZED = 401
         private const val FORBIDDEN_ERROR = 403
     }
 

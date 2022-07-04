@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.raoarsalan.core.domain.Result
 import com.raoarsalan.core.domain.ResultResponse
 import retrofit2.Response
+import java.net.UnknownHostException
 
 /**
  * this class is a wrapper for converting Retrofit Response to our custom Result class
@@ -23,14 +24,15 @@ object ApiCall {
             if (result.isSuccessful) {
                 Result.Success(result.body()!!)
             } else {
-                if (result.code() != 401) {
+                if (result.code() != ResultResponse.UN_AUTHORIZED) {
                     val gSon = Gson()
                     val baseApiError =
                         gSon.fromJson(result.errorBody()?.string(), ResultResponse::class.java)
-                    if (baseApiError != null && baseApiError.message.isNotEmpty()) Result.GenericError(
-                        result.code(),
-                        baseApiError.message
-                    )
+                    if (baseApiError != null && baseApiError.message.isNotEmpty())
+                        Result.GenericError(
+                            result.code(),
+                            baseApiError.message
+                        )
                     else Result.GenericError(result.code(), errorMsg)
                 } else {
                     Result.GenericError(result.code(), "Un-Authorized Error")
@@ -38,8 +40,7 @@ object ApiCall {
                 }
 
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        } catch (@Suppress("SwallowedException") e: UnknownHostException) {
             if (errorCode != null && errorMsg != null) {
                 Result.GenericError(errorCode, errorMsg)
             }

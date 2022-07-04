@@ -18,7 +18,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
+    private const val TIMEOUT: Long = 3000
     @Provides
     @Singleton
     fun provideBaseUrl(): String = BuildConfig.API
@@ -48,16 +48,15 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
-        val timeOut: Long = 3000
         val dispatcher = Dispatcher()
         dispatcher.maxRequests = 1
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder()
             .addNetworkInterceptor(interceptor)
-            .readTimeout(timeOut, TimeUnit.SECONDS)
-            .writeTimeout(timeOut, TimeUnit.SECONDS)
-            .connectTimeout(timeOut, TimeUnit.SECONDS)
+            .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+            .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
+            .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .dispatcher(dispatcher = dispatcher).build()
     }
 

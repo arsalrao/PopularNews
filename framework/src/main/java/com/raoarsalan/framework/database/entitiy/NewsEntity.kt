@@ -11,7 +11,7 @@ data class NewsEntity(
     @PrimaryKey
     var id: Long,
     var source: String,
-    var published_date: String,
+    var publishedDate: String,
     var byline: String,
     var type: String,
     var title: String,
