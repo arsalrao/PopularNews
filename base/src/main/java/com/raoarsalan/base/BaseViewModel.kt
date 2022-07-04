@@ -13,6 +13,11 @@ abstract class BaseViewModel : ViewModel() {
 
     private val _observeLoading = SingleLiveEvent<RequestHandle>()
     val observeLoading: LiveData<RequestHandle> = _observeLoading
+    val isNoDataFoundEvent = SingleLiveEvent<Boolean>()
+
+    fun setNoData(isNoData: Boolean) {
+        isNoDataFoundEvent.value = isNoData
+    }
 
     fun startLoading() {
         _observeLoading.postValue(

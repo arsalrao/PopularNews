@@ -22,22 +22,27 @@ class NewsVM @Inject constructor(
 
     fun getPopularNews() {
         startLoading()
+        setNoData(false)
         viewModelScope.launch {
             newsInteractor.getPopularNews()
                 .collect {
                     when (it) {
                         is Result.Success -> {
+                            val list = it.data.results
                             endLoading()
-                            newsInteractor.savePopularNews(it.data.results)
-                            observeNews.postValue(it.data.results)
+                            setNoData(list.isEmpty())
+                            newsInteractor.savePopularNews(list)
+                            observeNews.postValue(list)
                         }
 
                         is Result.GenericError -> {
+                            setNoData(false)
                             endLoading(it.message)
                             observeNews.postValue(newsInteractor.getPopularNewsLocally())
                         }
 
                         is Result.NetworkError -> {
+                            setNoData(false)
                             endLoading("Network Error")
                             observeNews.postValue(newsInteractor.getPopularNewsLocally())
                         }
