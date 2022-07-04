@@ -8,7 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class NewsDetailsFragment :
-    BaseFragment<FragmentNewsDetailsBinding, NewsDetailsVM>(NewsDetailsVM::class.java) {
+    BaseFragment<FragmentNewsDetailsBinding, NewsDetailsVM>() {
     override val viewModelBindingVariable: Int
         get() = BR.viewModel
 

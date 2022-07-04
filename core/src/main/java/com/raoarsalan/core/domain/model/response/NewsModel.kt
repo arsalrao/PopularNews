@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class NewsModel(
     val id: Long,
     val source: String,
+    @SerializedName("published_date")
     val publishedDate: String,
     val byline: String,
     val type: String,

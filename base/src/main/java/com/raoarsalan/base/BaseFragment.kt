@@ -17,7 +17,7 @@ import com.raoarsalan.base.utill.toast
 import com.raoarsalan.core.R
 import javax.inject.Inject
 
-abstract class BaseFragment<T : ViewDataBinding, V : ViewModel>(private val modelClass: Class<V>) :
+abstract class BaseFragment<T : ViewDataBinding, V : ViewModel> :
     Fragment() {
 
     private var _binding: T? = null

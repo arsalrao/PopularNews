@@ -11,7 +11,7 @@ import com.raoarsalan.news.databinding.FragmentNewsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NewsFragment : BaseFragment<FragmentNewsBinding, NewsVM>(NewsVM::class.java),
+class NewsFragment : BaseFragment<FragmentNewsBinding, NewsVM>(),
     NewsAdapter.OnItemClickListener {
     override val viewModelBindingVariable: Int
         get() = BR.viewModel

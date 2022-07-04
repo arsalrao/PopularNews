@@ -6,7 +6,7 @@ import com.raoarsalan.framework.database.entitiy.NewsEntity
 internal fun NewsEntity.toDomain() = NewsModel(
     id = id,
     source = source,
-    published_date = published_date,
+    publishedDate = published_date,
     byline = byline,
     type = type,
     title = title,
