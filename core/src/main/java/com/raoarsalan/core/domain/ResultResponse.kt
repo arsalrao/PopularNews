@@ -1,13 +1,21 @@
 package com.raoarsalan.core.domain
 
 data class ResultResponse<T>(var result: T?) {
-    var cod: Int = 0
+
+    companion object {
+        private const val BAD_REQUEST = 400
+        private const val CLIENT_TIMEOUT = 499 //Nginx shutdown
+        private const val UN_AUTHORIZED = 401
+        private const val FORBIDDEN_ERROR = 403
+    }
+
+    var code: Int = 0
     var message: String = ""
         set(value) {
             field = value
             when {
-                cod in 400..499 && result == null -> {
-                    if (cod != 401 && cod != 403) {
+                code in BAD_REQUEST..CLIENT_TIMEOUT && result == null -> {
+                    if (code != UN_AUTHORIZED && code != FORBIDDEN_ERROR) {
                         if (message.isEmpty())
                             field = "Server Error"
                     } else {

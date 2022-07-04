@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class NewsModel(
     val id: Long,
     val source: String,
-    val published_date: String,
+    val publishedDate: String,
     val byline: String,
     val type: String,
     val title: String,
@@ -17,7 +17,7 @@ data class NewsModel(
     fun thumbnailImg(): String? {
         return try {
             media?.get(0)?.mediaMeta?.get(0)?.url
-        } catch (e: IndexOutOfBoundsException) {
+        } catch (@Suppress("SwallowedException") e: java.lang.IndexOutOfBoundsException) {
             null
         }
     }
@@ -30,10 +30,10 @@ data class NewsModel(
     fun fullImg(): String? {
         return try {
             media?.get(0)?.mediaMeta?.get(2)?.url
-        } catch (e: IndexOutOfBoundsException) {
+        } catch (@Suppress("SwallowedException") e: java.lang.IndexOutOfBoundsException) {
             try {
                 media?.get(0)?.mediaMeta?.get(0)?.url
-            } catch (e: IndexOutOfBoundsException) {
+            } catch (@Suppress("SwallowedException") e: java.lang.IndexOutOfBoundsException) {
                 null
             }
         }
