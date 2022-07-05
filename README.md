@@ -48,10 +48,12 @@ DeteKt is a static code analyzer too for kotlin. It will help to finding code sm
 code etc.
 
 - try **./gradlew detekt** task on terminal to generate code status or you can view status
-  of [App module](/docs/app_module_detekt.html), [Core module](/docs/core_module_detekt.html)
-  ,[Base module](/docs/base_module_detekt.html)
-  , [Framework module](/docs/framework_module_detekt.html)
-  and [Features module](/docs/features_module_detekt.html).
+  of [App module](https://htmlpreview.github.io/?https://github.com/arsalrao/PopularNews/blob/main/docs/app_module_detekt.html)
+  , [Core module](https://htmlpreview.github.io/?https://github.com/arsalrao/PopularNews/blob/main/docs/core_module_detekt.html)
+  ,[Base module](https://htmlpreview.github.io/?https://github.com/arsalrao/PopularNews/blob/main/docs/base_module_detekt.html)
+  , [Framework module](https://htmlpreview.github.io/?https://github.com/arsalrao/PopularNews/blob/main/docs/framework_module_detekt.html)
+  and [Features module](https://htmlpreview.github.io/?https://github.com/arsalrao/PopularNews/blob/main/docs/features_module_detekt.html)
+  .
 
 ## Tech stack
 
