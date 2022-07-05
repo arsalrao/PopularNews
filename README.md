@@ -27,7 +27,7 @@ The architecture of the application strictly complies the following points.
 
 ## Modules
 
-<img src="/screenshot/app_flow_diagram.png" alt="Home"/>
+<img src="/docs/app_flow_diagram.png" alt="Home"/>
 
 - Application modules load all features modules(:core,:base,:framework,:features).
 - :base module is one of the main module in the application, where you can find all the common
@@ -41,6 +41,17 @@ The architecture of the application strictly complies the following points.
 - :features modules represents various features in the application. Each feature module can be
   delivered as dynamic feature modules in future if needed. Each of the feature module depends on
   core module and base module.
+
+## DeteKt
+
+DeteKt is a static code analyzer too for kotlin. It will help to finding code smells, complexity
+code etc.
+
+- try **./gradlew detekt** task on terminal to generate code status or you can view status
+  of [App module](/docs/app_module_detekt.html), [Core module](/docs/core_module_detekt.html)
+  ,[Base module](/docs/base_module_detekt.html)
+  , [Framework module](/docs/framework_module_detekt.html)
+  and [Features module](/docs/features_module_detekt.html).
 
 ## Tech stack
 
